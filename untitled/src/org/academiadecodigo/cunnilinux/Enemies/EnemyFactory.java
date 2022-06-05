@@ -1,26 +1,13 @@
 package org.academiadecodigo.cunnilinux.Enemies;
 
+import org.academiadecodigo.cunnilinux.Player.Player;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
+
 public class EnemyFactory {
-    public static Enemy getEnemy(Grid grid) {
-
-        int random = (int) (Math.random() * CarType.values().length);
-        CarType carType = CarType.values()[random];
-
-        Car car;
-
-        switch (carType) {
-            case FIAT:
-                car = new Fiat(grid.makeGridPosition());
-                break;
-            case MUSTANG:
-                car = new Mustang(grid.makeGridPosition());
-                break;
-            default:
-                car = new Fiat(grid.makeGridPosition());
-        }
-
-        return car;
-
+    public static Enemy getNewEnemy() {
+        return new Enemy(2);
     }
-
+    public static Boss getNewBoss() {
+        return new Boss(20);
+    }
 }
