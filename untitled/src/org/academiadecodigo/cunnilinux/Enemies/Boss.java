@@ -1,4 +1,11 @@
 package org.academiadecodigo.cunnilinux.Enemies;
 
-public class Boss extends Alive{
+import org.academiadecodigo.cunnilinux.Interfaces.Hitable;
+
+public class Boss extends Alive implements Hitable {
+
+
+    public Boss {
+        super();
+    }
 }
