@@ -1,4 +1,6 @@
 package org.academiadecodigo.cunnilinux.Props;
 
-public class Props {
+public abstract class Props {
+
+
 }
