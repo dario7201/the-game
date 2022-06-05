@@ -7,13 +7,9 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Enemy extends Alive implements Hitable {
     public Enemy(int health) {
         super(health);
-        Picture enemysprite = new Picture();
-        enemysprite.draw();
+        Picture enemy_sprite = new Picture();
+        enemy_sprite.draw();
 
     }
 
-    @Override
-    public void hit(int damage) {
-        setHealth(getHealth() - damage);
-    }
 }
