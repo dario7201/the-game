@@ -12,4 +12,8 @@ public class Enemy extends Alive implements Hitable {
 
     }
 
+    @Override
+    public void hit(int damage) {
+
+    }
 }
