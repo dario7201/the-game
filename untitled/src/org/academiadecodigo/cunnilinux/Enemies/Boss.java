@@ -12,4 +12,8 @@ public class Boss extends Alive implements Hitable {
 
     }
 
+    @Override
+    public void hit(int damage) {
+        setHealth(getHealth() - damage);
+    }
 }

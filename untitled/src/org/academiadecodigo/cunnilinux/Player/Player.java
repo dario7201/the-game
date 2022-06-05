@@ -8,8 +8,13 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Player extends Alive {
     public Player(int health) {
         super(health);
-        Ellipse player = new Ellipse(10,10,30,30);
+        Ellipse player = new Ellipse(10, 10, 30, 30);
         player.setColor(Color.DARK_GRAY);
         player.fill();
+
+
     }
+
+
 }
+

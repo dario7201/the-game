@@ -14,10 +14,12 @@ public class Game {
     public void init() {
         FieldFactory.getNewField();
         PlayerFactory.getNewPlayer();
-
+        EnemyFactory.getNewEnemy();
+        EnemyFactory.getNewBoss();
 
 
     }
+
     public void start() {
         init();
     }

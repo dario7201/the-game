@@ -11,4 +11,9 @@ public class Enemy extends Alive implements Hitable {
         enemysprite.draw();
 
     }
+
+    @Override
+    public void hit(int damage) {
+        setHealth(getHealth() - damage);
+    }
 }
