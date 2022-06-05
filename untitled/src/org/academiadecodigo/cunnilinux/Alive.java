@@ -18,4 +18,12 @@ public class Alive {
     public String getMessage() {
         return message;
     }
+
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public void setDead() {
+        isDead = true;
+    }
 }
