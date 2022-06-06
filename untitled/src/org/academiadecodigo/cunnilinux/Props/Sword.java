@@ -1,6 +1,7 @@
 package org.academiadecodigo.cunnilinux.Props;
 
 import org.academiadecodigo.cunnilinux.Interfaces.Hitable;
+import org.academiadecodigo.cunnilinux.Player.Player;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Sword extends Props {
@@ -9,16 +10,14 @@ public class Sword extends Props {
     Picture weaponEquipped;
 
     public Sword(int v,int v1,String s) {
-        this.weaponDisplay = new Picture(200,150,"untitled/Utils/Pictures/Lazer/Blue/Lazer_Blue_Vertical_Up.png");
-    this.weaponDisplay.draw();
-
+        this.weaponDisplay = new Picture(v,v1,s);
     }
 
     public int getDamage() {
         return damage;
     }
 
-    public Picture getPicture() {
-        return picture;
+    public Picture getWeaponEquipped() {
+        return weaponEquipped;
     }
 }

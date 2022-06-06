@@ -14,6 +14,7 @@ public class Player extends Alive implements Interactable, Hitable {
     Picture picture;
     Keyboard keyboard;
     Sword sword;
+    Chest chest;
     private int col;
     private int row;
     public Player(int health) {
@@ -37,11 +38,15 @@ public class Player extends Alive implements Interactable, Hitable {
     public void interact() {
         System.out.println("Interacted");
         if(this.picture.getX() == 50) {
-        setSword(new Sword());
+        setSword();
         }
     }
 
     public void setSword(Sword sword) {
         this.sword = sword;
+    }
+
+    public Sword getSword() {
+        return sword;
     }
 }

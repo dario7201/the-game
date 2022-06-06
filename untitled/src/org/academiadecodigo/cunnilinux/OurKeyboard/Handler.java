@@ -20,15 +20,19 @@ public class Handler implements KeyboardHandler {
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_LEFT:
                 player.getPicture().translate(-10, 0);//LEFT
+                player.getSword().getPicture().translate(-10,0);
                 break;
             case KeyboardEvent.KEY_UP:
                 player.getPicture().translate(0, -10); //UP
+                player.getSword().getPicture().translate(0,-10);
                 break;
             case KeyboardEvent.KEY_RIGHT:
                 player.getPicture().translate(10, 0);//RIGHT
+                player.getSword().getPicture().translate(10,0);
                 break;
             case KeyboardEvent.KEY_DOWN:
                 player.getPicture().translate(0, 10);//DOWN
+                player.getSword().getPicture().translate(0,10);
                 break;
             case KeyboardEvent.KEY_X:
                 player.interact();
