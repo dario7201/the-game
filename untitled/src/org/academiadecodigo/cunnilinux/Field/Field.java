@@ -14,9 +14,7 @@ import javax.swing.*;
 
 public class Field {
     public Field() {
-        Rectangle field = new Rectangle(10, 10, 1280, 720);
-        field.setColor(Color.BLACK);
+        Picture field = new Picture(10,10,"untitled/Utils/field.png");
         field.draw();
     }
-
 }

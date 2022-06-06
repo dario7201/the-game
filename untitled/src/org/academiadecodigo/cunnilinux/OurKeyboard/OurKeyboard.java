@@ -13,6 +13,8 @@ public class OurKeyboard {
     KeyboardEvent keyboardEventPlayerLeft = new KeyboardEvent();
     KeyboardEvent keyboardEventPlayerUp = new KeyboardEvent();
     KeyboardEvent keyboardEventPlayerDown = new KeyboardEvent();
+    KeyboardEvent keyboardEventPlayerInteract = new KeyboardEvent();
+    KeyboardEvent keyboardEventPlayerAttack = new KeyboardEvent();
     Keyboard keyboard = new Keyboard(handler);
     public OurKeyboard(Player player) {
         this.player = player;
@@ -36,5 +38,13 @@ public class OurKeyboard {
         keyboardEventPlayerDown.setKey(KeyboardEvent.KEY_DOWN);
         keyboardEventPlayerDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(keyboardEventPlayerDown);
+
+        keyboardEventPlayerInteract.setKey(KeyboardEvent.KEY_X);
+        keyboardEventPlayerInteract.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(keyboardEventPlayerInteract);
+
+        keyboardEventPlayerAttack.setKey(KeyboardEvent.KEY_SPACE);
+        keyboardEventPlayerAttack.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(keyboardEventPlayerAttack);
     }
 }

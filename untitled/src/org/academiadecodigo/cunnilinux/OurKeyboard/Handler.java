@@ -10,6 +10,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Handler implements KeyboardHandler {
 
     private Player player;
+
     public void setPlayer(Player player) {
         this.player = player;
     }
@@ -28,6 +29,12 @@ public class Handler implements KeyboardHandler {
                 break;
             case KeyboardEvent.KEY_DOWN:
                 player.getPicture().translate(0, 10);//DOWN
+                break;
+            case KeyboardEvent.KEY_X:
+                player.interact();
+                break;
+            case KeyboardEvent.KEY_SPACE:
+                player.hit(1);
                 break;
             default:
         }
