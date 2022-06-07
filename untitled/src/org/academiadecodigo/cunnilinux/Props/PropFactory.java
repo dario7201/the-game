@@ -7,7 +7,7 @@ public class PropFactory {
             case 1:
         return new Chest();
             case 2:
-                //return new Sword();
+                return new Sword();
         }return null;
     }
 }

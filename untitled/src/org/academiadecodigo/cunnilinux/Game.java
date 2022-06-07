@@ -16,6 +16,7 @@ public class Game {
     public void init() {
         FieldFactory.getNewField();
         PropFactory.getNewProp(1);
+        PropFactory.getNewProp(2);
         Player player = PlayerFactory.getNewPlayer();
         OurKeyboard keyboard = new OurKeyboard(player);
         keyboard.playerKeyboard();

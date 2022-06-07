@@ -14,12 +14,13 @@ public class Player extends Alive implements Interactable, Hitable {
     Picture picture;
     Keyboard keyboard;
     Sword sword;
-    Chest chest;
+    boolean isEquipped;
     private int col;
     private int row;
+
     public Player(int health) {
         super(health);
-        this.picture = new Picture(180,300,"untitled/Utils/player_forward.png");
+        this.picture = new Picture(180, 300, "untitled/Utils/player_forward.png");
         this.picture.draw();
         this.col = picture.getX();
         this.row = picture.getY();
@@ -31,14 +32,17 @@ public class Player extends Alive implements Interactable, Hitable {
 
     @Override
     public void hit(int damage) {
-        System.out.println("deals 1 damage");
+        System.out.println("deals " + damage + " damage");
     }
 
     @Override
     public void interact() {
         System.out.println("Interacted");
-        if(this.picture.getX() == 50) {
-        setSword();
+        if (this.picture.getX() == 50) {
+            System.out.println("interacted with chest");
+            picture.delete();
+            setEquipped();
+            picture.draw();
         }
     }
 
@@ -49,4 +53,10 @@ public class Player extends Alive implements Interactable, Hitable {
     public Sword getSword() {
         return sword;
     }
+
+    public void setEquipped() {
+        isEquipped = true;
+        this.picture = new Picture(getPicture().getX(), getPicture().getY(), "untitled/Utils/Pictures/PlayerWithBlueWeapon/player_forward.png");
+    }
+
 }
