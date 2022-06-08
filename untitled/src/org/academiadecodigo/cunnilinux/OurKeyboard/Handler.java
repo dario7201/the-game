@@ -1,5 +1,6 @@
 package org.academiadecodigo.cunnilinux.OurKeyboard;
 
+import org.academiadecodigo.cunnilinux.GameObjects.GameObjects;
 import org.academiadecodigo.cunnilinux.Player.Player;
 import org.academiadecodigo.simplegraphics.graphics.Ellipse;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
@@ -19,16 +20,16 @@ public class Handler implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_LEFT:
-                player.getPicture().translate(-10, 0);//LEFT
+                player.moveLeft();
                 break;
             case KeyboardEvent.KEY_UP:
-                player.getPicture().translate(0, -10); //UP
+                player.moveUp();
                 break;
             case KeyboardEvent.KEY_RIGHT:
-                player.getPicture().translate(10, 0);//RIGHT
+                player.moveRight();
                 break;
             case KeyboardEvent.KEY_DOWN:
-                player.getPicture().translate(0, 10);//DOWN
+                player.moveDown();
                 break;
             case KeyboardEvent.KEY_X:
                 player.interact();

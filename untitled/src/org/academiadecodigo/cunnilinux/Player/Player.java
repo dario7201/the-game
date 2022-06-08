@@ -1,62 +1,45 @@
 package org.academiadecodigo.cunnilinux.Player;
 
 import org.academiadecodigo.cunnilinux.Alive;
-import org.academiadecodigo.cunnilinux.Interfaces.Hitable;
-import org.academiadecodigo.cunnilinux.Interfaces.Interactable;
-import org.academiadecodigo.cunnilinux.Props.PropFactory;
-import org.academiadecodigo.cunnilinux.Props.Sword;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Ellipse;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Player extends Alive implements Interactable, Hitable {
-    Picture picture;
-    Keyboard keyboard;
-    Sword sword;
-    boolean isEquipped;
-    private int col;
-    private int row;
 
-    public Player(int health) {
-        super(health);
-        this.picture = new Picture(180, 300, "untitled/Utils/player_forward.png");
+public class Player extends Alive {
+    Picture picture;
+    public boolean isCrashed = false;
+
+    public Player(int health, Rectangle hitbox) {
+        super(health, hitbox);
+        this.picture = new Picture(10, 10, "untitled/Utils/player_forward.png");
         this.picture.draw();
-        this.col = picture.getX();
-        this.row = picture.getY();
     }
 
     public Picture getPicture() {
         return picture;
     }
 
-    @Override
-    public void hit(int damage) {
-        System.out.println("deals " + damage + " damage");
+
+    public void moveRight() {
+        super.getCollisionDetector().isCrashed(this);
+        getPicture().translate(10, 0);
     }
 
-    @Override
-    public void interact() {
-        System.out.println("Interacted");
-        if (this.picture.getX() == 50) {
-            System.out.println("interacted with chest");
-            picture.delete();
-            setEquipped();
-            picture.draw();
-        }
+    public void moveLeft() {
+        getPicture().translate(-10, 0);
+        super.getCollisionDetector().isCrashed(this);
     }
 
-    public void setSword(Sword sword) {
-        this.sword = sword;
+    public void moveUp() {
+        getPicture().translate(0, -10);
+        super.getCollisionDetector().isCrashed(this);
     }
 
-    public Sword getSword() {
-        return sword;
+    public void moveDown() {
+        getPicture().translate(0, 10);
+        super.getCollisionDetector().isCrashed(this);
     }
 
-    public void setEquipped() {
-        isEquipped = true;
-        this.picture = new Picture(getPicture().getX(), getPicture().getY(), "untitled/Utils/Pictures/PlayerWithBlueWeapon/player_forward.png");
-    }
 
 }
