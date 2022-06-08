@@ -14,11 +14,9 @@ import javax.swing.*;
 
 public class Field {
     public Field() {
-<<<<<<< HEAD
-        Picture field = new Picture(10,10,"untitled/Utils/field.png");
-=======
+
         Picture  field = new Picture(10, 10, "untitled/Utils/GameField.png");
->>>>>>> main
+
         field.draw();
     }
 }
