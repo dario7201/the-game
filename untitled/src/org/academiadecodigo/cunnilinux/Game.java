@@ -8,7 +8,10 @@ import org.academiadecodigo.cunnilinux.Player.Player;
 import org.academiadecodigo.cunnilinux.Player.PlayerFactory;
 import org.academiadecodigo.cunnilinux.Props.PropFactory;
 import org.academiadecodigo.cunnilinux.Props.Prop;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
+import java.awt.*;
 import java.util.LinkedList;
 
 public class Game {
@@ -24,7 +27,10 @@ public class Game {
 
         Player player = PlayerFactory.getNewPlayer();
 
-        Prop wall = PropFactory.getNewProp(1,1,50,50);
+        Prop wall = PropFactory.getNewProp(200,1,400,500);
+        Rectangle rectangle = new Rectangle(200,1,400,500);
+        rectangle.setColor(Color.BLUE);
+        rectangle.fill();
 
         //ATRIBUIR A REFERENCIA DO DETECTOR AO PLAYER
         player.setCollisionDetector(collisionDetector);
@@ -42,9 +48,6 @@ public class Game {
         keyboard.playerKeyboard();
     }
 
-    private void playerKeyboard() {
-
-    }
 
     public void start() {
         init();

@@ -2,9 +2,6 @@ package org.academiadecodigo.cunnilinux.Collision;
 
 
 import org.academiadecodigo.cunnilinux.GameObjects.GameObjects;
-import org.academiadecodigo.cunnilinux.Player.Player;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.util.LinkedList;
 
@@ -22,7 +19,7 @@ public class CollisionDetector {
     public boolean isCrashed(GameObjects objectToCompare) {
         for (GameObjects object : objects) {
 
-            if (objectToCompare.getX() + objectToCompare.getWidth() <= object.getX() + object.getWidth() && objectToCompare.getY() == object.getY() + object.getHeight()) { //debaixo para cima
+            if (objectToCompare.getX() + objectToCompare.getWidth() <= object.getX() + object.getWidth() + 1 && objectToCompare.getY() + objectToCompare.getHeight() == object.getY() + object.getHeight() + 1) { //debaixo para cima
                 System.out.println("debaixo para cima");
 
 
