@@ -1,10 +1,15 @@
 package org.academiadecodigo.cunnilinux;
 
-public class Alive {
+import org.academiadecodigo.cunnilinux.GameObjects.GameObjects;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+
+
+public abstract class Alive extends GameObjects {
     private int health;
     private boolean isDead;
     private String message;
-    public Alive(int health) {
+    public Alive(int health, Rectangle hitbox) {
+        super(hitbox);
         this.health = health;
     }
 

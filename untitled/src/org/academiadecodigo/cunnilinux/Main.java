@@ -1,7 +1,6 @@
 package org.academiadecodigo.cunnilinux;
 
 import org.academiadecodigo.cunnilinux.Props.PropFactory;
-import org.academiadecodigo.cunnilinux.Props.walls;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 

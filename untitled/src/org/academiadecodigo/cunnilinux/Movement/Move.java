@@ -6,9 +6,5 @@ public enum Move {
     LEFT,
     RIGHT;
 
-    public void move() {
 
-    }
-
-    //Create method to barriers.
 }
