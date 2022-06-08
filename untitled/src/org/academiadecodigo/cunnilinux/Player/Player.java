@@ -40,6 +40,14 @@ public class Player extends Alive {
         getPicture().translate(0, 10);
         super.getCollisionDetector().isCrashed(this);
     }
+    @Override
+    public void interact() {
+        System.out.println("Interacted");
+        if (this.picture.getX() == 50) {
+            System.out.println("interacted with chest");
+            picture.delete();
+            setEquipped();
+            picture.draw();
+        }
 
-
-}
+}}gi
