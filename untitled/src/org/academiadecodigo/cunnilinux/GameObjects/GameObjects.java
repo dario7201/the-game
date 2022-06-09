@@ -31,7 +31,12 @@ public abstract class GameObjects {
         this.collisionDetector = collisionDetector;
     }
 
+    public Rectangle getHitbox() {
+        return hitbox;
+    }
+
     public CollisionDetector getCollisionDetector() {
         return collisionDetector;
     }
 }
+

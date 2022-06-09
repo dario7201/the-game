@@ -8,6 +8,7 @@ import org.academiadecodigo.cunnilinux.Player.Player;
 import org.academiadecodigo.cunnilinux.Player.PlayerFactory;
 import org.academiadecodigo.cunnilinux.Props.PropFactory;
 import org.academiadecodigo.cunnilinux.Props.Prop;
+import org.academiadecodigo.cunnilinux.Props.Wall;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
@@ -22,13 +23,14 @@ public class Game {
         //CRIAR LISTA
         objects = new LinkedList<>();
 
+
         // CRIAR UM DETECTOR E ATRIBUIR A REFNERENCIA DA LISTA
         CollisionDetector collisionDetector = new CollisionDetector(objects);
 
         Player player = PlayerFactory.getNewPlayer();
 
-        Prop wall = PropFactory.getNewProp(200,1,400,500);
-        Rectangle rectangle = new Rectangle(200,1,400,500);
+        Prop wall = PropFactory.getNewProp(15,15,345,335);
+        Rectangle rectangle = new Rectangle(15,15,345,335);
         rectangle.setColor(Color.BLUE);
         rectangle.fill();
 
@@ -43,7 +45,6 @@ public class Game {
 
         //ADICIONAR WALL A LISTa
         objects.add(wall);
-
         OurKeyboard keyboard = new OurKeyboard(player);
         keyboard.playerKeyboard();
     }

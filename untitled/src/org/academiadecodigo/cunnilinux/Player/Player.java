@@ -1,6 +1,7 @@
 package org.academiadecodigo.cunnilinux.Player;
 
 import org.academiadecodigo.cunnilinux.Alive;
+import org.academiadecodigo.cunnilinux.GameObjects.GameObjects;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
@@ -24,20 +25,26 @@ public class Player extends Alive {
     public void moveRight() {
         super.getCollisionDetector().isCrashed(this);
         getPicture().translate(10, 0);
+        getHitbox().translate(10,0);
+
     }
 
     public void moveLeft() {
         getPicture().translate(-10, 0);
+        getHitbox().translate(-10, 0);
         super.getCollisionDetector().isCrashed(this);
     }
 
     public void moveUp() {
         getPicture().translate(0, -10);
+        getHitbox().translate(0, -10);
         super.getCollisionDetector().isCrashed(this);
+
     }
 
     public void moveDown() {
         getPicture().translate(0, 10);
+        getHitbox().translate(0, 10);
         super.getCollisionDetector().isCrashed(this);
     }
 
