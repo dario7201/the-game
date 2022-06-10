@@ -1,6 +1,8 @@
 package org.academiadecodigo.cunnilinux;
 
 import org.academiadecodigo.cunnilinux.Collision.CollisionDetector;
+import org.academiadecodigo.cunnilinux.Enemies.Enemy;
+import org.academiadecodigo.cunnilinux.Enemies.EnemyFactory;
 import org.academiadecodigo.cunnilinux.Field.FieldFactory;
 import org.academiadecodigo.cunnilinux.GameObjects.GameObjects;
 import org.academiadecodigo.cunnilinux.OurKeyboard.OurKeyboard;
@@ -28,9 +30,10 @@ public class Game {
         CollisionDetector collisionDetector = new CollisionDetector(objects);
 
         Player player = PlayerFactory.getNewPlayer();
+        Enemy enemy = EnemyFactory.getNewEnemy();
 
         Prop wall = PropFactory.getNewProp(500,100,340,330);
-        Rectangle rectangle = new Rectangle(500,100,340,330);
+        Rectangle rectangle = new Rectangle(200,200,200,200);
         rectangle.setColor(Color.BLUE);
         rectangle.fill();
 

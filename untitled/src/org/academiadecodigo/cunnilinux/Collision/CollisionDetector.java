@@ -18,6 +18,7 @@ public class CollisionDetector {
     // ISTO CHECKA SE O PLAYER ESTA A BATER EM ALGO
     //sempre que o player anda isto tem de ser checked, meter o movement no player em vez de handler
     public boolean isCrashed(GameObjects objectToCompare, DirectionType directionType) {
+        System.out.println(objects.size());
         for (GameObjects object : objects) {
             if (!(object instanceof Player)) {
                 switch (directionType) {
