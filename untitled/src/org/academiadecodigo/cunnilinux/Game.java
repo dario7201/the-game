@@ -29,8 +29,8 @@ public class Game {
 
         Player player = PlayerFactory.getNewPlayer();
 
-        Prop wall = PropFactory.getNewProp(15,15,345,335);
-        Rectangle rectangle = new Rectangle(15,15,345,335);
+        Prop wall = PropFactory.getNewProp(500,100,340,330);
+        Rectangle rectangle = new Rectangle(500,100,340,330);
         rectangle.setColor(Color.BLUE);
         rectangle.fill();
 

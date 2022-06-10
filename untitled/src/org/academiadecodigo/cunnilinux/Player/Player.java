@@ -1,13 +1,13 @@
 package org.academiadecodigo.cunnilinux.Player;
 
 import org.academiadecodigo.cunnilinux.Alive;
-import org.academiadecodigo.cunnilinux.GameObjects.GameObjects;
+import org.academiadecodigo.cunnilinux.Collision.DirectionType;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
 public class Player extends Alive {
+    private final int MOVEMENT_SIZE = 10;
     Picture picture;
     public boolean isCrashed = false;
 
@@ -23,29 +23,31 @@ public class Player extends Alive {
 
 
     public void moveRight() {
-        super.getCollisionDetector().isCrashed(this);
-        getPicture().translate(10, 0);
-        getHitbox().translate(10,0);
-
+        if (!(super.getCollisionDetector().isCrashed(this, DirectionType.RIGHT))) {
+            getPicture().translate(MOVEMENT_SIZE, 0);
+            getHitbox().translate(MOVEMENT_SIZE, 0);
+        }
     }
 
     public void moveLeft() {
-        getPicture().translate(-10, 0);
-        getHitbox().translate(-10, 0);
-        super.getCollisionDetector().isCrashed(this);
+        if (!(super.getCollisionDetector().isCrashed(this, DirectionType.LEFT))) {
+            getPicture().translate(-MOVEMENT_SIZE, 0);
+            getHitbox().translate(-MOVEMENT_SIZE, 0);
+        }
     }
 
     public void moveUp() {
-        getPicture().translate(0, -10);
-        getHitbox().translate(0, -10);
-        super.getCollisionDetector().isCrashed(this);
-
+        if (!(super.getCollisionDetector().isCrashed(this, DirectionType.UP))) {
+            getPicture().translate(0, -MOVEMENT_SIZE);
+            getHitbox().translate(0, -MOVEMENT_SIZE);
+        }
     }
 
     public void moveDown() {
-        getPicture().translate(0, 10);
-        getHitbox().translate(0, 10);
-        super.getCollisionDetector().isCrashed(this);
+        if (!(super.getCollisionDetector().isCrashed(this, DirectionType.DOWN))) {
+            getPicture().translate(0, MOVEMENT_SIZE);
+            getHitbox().translate(0, MOVEMENT_SIZE);
+        }
     }
 
 
