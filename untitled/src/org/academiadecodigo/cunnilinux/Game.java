@@ -33,9 +33,13 @@ public class Game {
         Enemy enemy = EnemyFactory.getNewEnemy();
 
         Prop wall = PropFactory.getNewProp(500,100,340,330);
+        Prop wall1 = PropFactory.getNewProp(200,200,200,200);
         Rectangle rectangle = new Rectangle(200,200,200,200);
+        Rectangle rectangle1 = new Rectangle(500,100,340,330);
         rectangle.setColor(Color.BLUE);
+        rectangle1.setColor(Color.BLUE);
         rectangle.fill();
+        rectangle1.fill();
 
         //ATRIBUIR A REFERENCIA DO DETECTOR AO PLAYER
         player.setCollisionDetector(collisionDetector);
@@ -43,10 +47,19 @@ public class Game {
         //ADICIONAR PLAYER A LISTA
         objects.add(player);
 
+        //ADICIONAR ENEMY A LISTA
+//        objects.add(enemy);
+
         //ATRIBUIR REFERENCIA DO DETECTOR A WALL
         wall.setCollisionDetector(collisionDetector);
+        wall1.setCollisionDetector(collisionDetector);
+
+        //ATRIBUIR REFERENCIA DO DETECTOR A ENEMY
+        enemy.setCollisionDetector(collisionDetector);
 
         //ADICIONAR WALL A LISTa
+        objects.add(enemy);
+        objects.add(wall1);
         objects.add(wall);
         OurKeyboard keyboard = new OurKeyboard(player);
         keyboard.playerKeyboard();

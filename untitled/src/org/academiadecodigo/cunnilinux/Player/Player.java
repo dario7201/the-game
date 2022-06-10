@@ -2,13 +2,16 @@ package org.academiadecodigo.cunnilinux.Player;
 
 import org.academiadecodigo.cunnilinux.Alive;
 import org.academiadecodigo.cunnilinux.Collision.DirectionType;
+import org.academiadecodigo.cunnilinux.Interfaces.Hitable;
+import org.academiadecodigo.cunnilinux.Interfaces.Interactable;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
-public class Player extends Alive {
+public class Player extends Alive implements Hitable {
     private final int MOVEMENT_SIZE = 10;
     Picture picture;
+    private int damage;
     public boolean isCrashed = false;
 
     public Player(int health, Rectangle hitbox) {
@@ -50,5 +53,30 @@ public class Player extends Alive {
         }
     }
 
+//    if(super.getCollisionDetector().attackIfNear(this,))
 
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+    public void interactUp(){
+
+    }
+    public void interactDown(){
+
+    }
+    public void interactLeft(){
+
+    }
+    public void interactRight(){
+
+    }
+
+    @Override
+    public void hit(int damage) {
+    setHealth(getHealth() - damage);
+    }
 }
