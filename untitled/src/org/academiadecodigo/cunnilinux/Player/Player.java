@@ -5,6 +5,7 @@ import org.academiadecodigo.cunnilinux.Collision.DirectionType;
 import org.academiadecodigo.cunnilinux.Enemies.Boss;
 import org.academiadecodigo.cunnilinux.Enemies.Enemy;
 import org.academiadecodigo.cunnilinux.Interfaces.Hitable;
+import org.academiadecodigo.cunnilinux.Props.Chest;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -13,6 +14,7 @@ public class Player extends Alive implements Hitable {
     private final int MOVEMENT_SIZE = 10;
     private Picture picture;
     private int damage = 10;
+
     public boolean isCrashed = false;
 
     public Player(int health, int damage, Rectangle hitbox) {
@@ -62,10 +64,6 @@ public class Player extends Alive implements Hitable {
         this.damage = damage;
     }
 
-    public void interact() {
-
-    }
-
     public void setPicture(Picture picture) {
         this.picture = picture;
     }
@@ -100,8 +98,23 @@ public class Player extends Alive implements Hitable {
                     System.out.println("BOSS IS DEAD: " + boss.isDead());
                 }
             }
+
         }
 
+    }
+
+    public void interact() {
+        Chest chest = getCollisionDetector().chestInRange(this);
+        if(chest != null) {
+            if(!chest.isInteracted()){
+            picture.delete();
+            setPicture(new Picture(getX(), getY(), "untitled/Utils/cock_up.png"));
+            picture.draw();
+                System.out.println(getDamage());
+                damage = 20;
+                System.out.println(getDamage());
+            }
+        }
     }
 
 }
