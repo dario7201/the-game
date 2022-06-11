@@ -22,23 +22,23 @@ public class Player extends Alive {
 
 
     public void moveRight() {
-        super.getCollisionDetector().isCrashed(this);
+      //  super.getCollisionDetector().isCrashed(this);
         getPicture().translate(10, 0);
     }
 
     public void moveLeft() {
         getPicture().translate(-10, 0);
-        super.getCollisionDetector().isCrashed(this);
+       // super.getCollisionDetector().isCrashed(this);
     }
 
     public void moveUp() {
         getPicture().translate(0, -10);
-        super.getCollisionDetector().isCrashed(this);
+       // super.getCollisionDetector().isCrashed(this);
     }
 
     public void moveDown() {
         getPicture().translate(0, 10);
-        super.getCollisionDetector().isCrashed(this);
+        //super.getCollisionDetector().isCrashed(this);
     }
 
 
