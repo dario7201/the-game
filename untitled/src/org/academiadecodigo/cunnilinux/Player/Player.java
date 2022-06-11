@@ -2,6 +2,7 @@ package org.academiadecodigo.cunnilinux.Player;
 
 import org.academiadecodigo.cunnilinux.Alive;
 import org.academiadecodigo.cunnilinux.Collision.DirectionType;
+import org.academiadecodigo.cunnilinux.Enemies.Boss;
 import org.academiadecodigo.cunnilinux.Enemies.Enemy;
 import org.academiadecodigo.cunnilinux.Interfaces.Hitable;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
@@ -10,8 +11,8 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Player extends Alive implements Hitable {
     private final int MOVEMENT_SIZE = 10;
-    Picture picture;
-    private int damage = 1;
+    private Picture picture;
+    private int damage = 10;
     public boolean isCrashed = false;
 
     public Player(int health, int damage, Rectangle hitbox) {
@@ -53,8 +54,6 @@ public class Player extends Alive implements Hitable {
         }
     }
 
-//    if(super.getCollisionDetector().attackIfNear(this,))
-
     public int getDamage() {
         return damage;
     }
@@ -67,16 +66,42 @@ public class Player extends Alive implements Hitable {
 
     }
 
+    public void setPicture(Picture picture) {
+        this.picture = picture;
+    }
+
     @Override
     public void hit() {
-        Enemy enemy = getCollisionDetector().isInAttackRange(this);
-        if(enemy.getHealth() > 0) {
-        enemy.setHealth(enemy.getHealth()-damage);
-        if(enemy.getHealth() <= 0) {
-           enemy.setDead();
-            System.out.println(enemy.isDead());
+
+        Enemy enemy = getCollisionDetector().enemyInRange(this);
+        Boss boss = getCollisionDetector().bossInRange(this);
+        if (enemy != null) {
+            if (enemy.getHealth() > 0) {
+                enemy.setHealth(enemy.getHealth() - damage);
+                System.out.println("ENEMY HAS " + enemy.getHealth() + " HP");
+                if (enemy.getHealth() <= 0) {
+                    enemy.deletePic();
+                    enemy.deleteHitbox();
+                    enemy.setDead();
+                    System.out.println("ENEMY IS DEAD: " + enemy.isDead());
+                }
+            }
         }
+
+        if (boss != null) {
+            if (boss.getHealth() > 0) {
+                boss.setHealth(boss.getHealth() - damage);
+                System.out.println("BOSS HAS " + boss.getHealth() + " HP");
+                if (boss.getHealth() <= 0) {
+                    boss.deletePic();
+                    boss.deleteHitbox();
+                    boss.setDead();
+
+                    System.out.println("BOSS IS DEAD: " + boss.isDead());
+                }
+            }
         }
 
     }
+
 }

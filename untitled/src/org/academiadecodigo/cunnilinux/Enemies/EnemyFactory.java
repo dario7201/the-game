@@ -6,9 +6,9 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class EnemyFactory {
     public static Enemy getNewEnemy() {
-        return new Enemy(5, 1,new Rectangle(500, 600, 20,20));
+        return new Enemy(40, 20,new Rectangle(500, 600, 20,20));
     }
     public static Boss getNewBoss() {
-        return new Boss(20,2, new Rectangle(500, 600,20,  20));
+        return new Boss(200,30, new Rectangle(1000, 200,20,  20));
     }
 }

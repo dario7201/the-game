@@ -12,12 +12,14 @@ public class Enemy extends Alive implements Hitable {
         super(health, damage, hitbox);
         this.picture = new Picture(500, 600, "untitled/Utils/player_forward.png");
         this.picture.draw();
-        this.picture.load();
     }
 
 
     @Override
     public void hit() {
 
+    }
+    public void deletePic() {
+        this.picture.delete();
     }
 }

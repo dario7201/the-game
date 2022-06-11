@@ -1,6 +1,7 @@
 package org.academiadecodigo.cunnilinux.Collision;
 
 
+import org.academiadecodigo.cunnilinux.Enemies.Boss;
 import org.academiadecodigo.cunnilinux.Enemies.Enemy;
 import org.academiadecodigo.cunnilinux.GameObjects.GameObjects;
 import org.academiadecodigo.cunnilinux.Player.Player;
@@ -47,7 +48,7 @@ public class CollisionDetector {
         }return false;
     }
 
-    public Enemy isInAttackRange(GameObjects objectToCompare) {
+    public Enemy enemyInRange(GameObjects objectToCompare) {
         for (GameObjects object : objects) {
             if (objectToCompare instanceof Player && object instanceof Enemy) {
                if(verifyMoveDown(objectToCompare,object) || verifyMoveLeft(objectToCompare,object) ||
@@ -59,7 +60,19 @@ public class CollisionDetector {
 
         return null;
     }
-    public
+    public Boss bossInRange(GameObjects objectToCompare) {
+        for (GameObjects object : objects) {
+            if (objectToCompare instanceof Player && object instanceof Boss) {
+               if(verifyMoveDown(objectToCompare,object) || verifyMoveLeft(objectToCompare,object) ||
+                       verifyMoveRight(objectToCompare,object) || verifyMoveUp(objectToCompare,object)) {
+                   return (Boss) object;
+               }
+            }
+        }
+
+        return null;
+    }
+
 
     private boolean verifyMoveRight(GameObjects objectToCompare, GameObjects object) {
         if (objectToCompare.getX() + objectToCompare.getWidth() == object.getX()

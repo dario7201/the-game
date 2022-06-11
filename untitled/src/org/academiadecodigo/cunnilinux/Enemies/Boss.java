@@ -6,16 +6,19 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Boss extends Alive implements Hitable {
+    private Picture picture;
     public Boss(int health, int damage, Rectangle hitbox) {
         super(health, damage, hitbox);
-        Picture boss_sprite = new Picture();
-        boss_sprite.draw();
-
+        this.picture = new Picture(1000,200,"untitled/Utils/player_forward.png");
+        picture.draw();
     }
 
 
     @Override
     public void hit() {
 
+    }
+    public void deletePic() {
+        this.picture.delete();
     }
 }

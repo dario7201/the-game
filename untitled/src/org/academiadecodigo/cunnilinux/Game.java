@@ -1,6 +1,7 @@
 package org.academiadecodigo.cunnilinux;
 
 import org.academiadecodigo.cunnilinux.Collision.CollisionDetector;
+import org.academiadecodigo.cunnilinux.Enemies.Boss;
 import org.academiadecodigo.cunnilinux.Enemies.Enemy;
 import org.academiadecodigo.cunnilinux.Enemies.EnemyFactory;
 import org.academiadecodigo.cunnilinux.Field.FieldFactory;
@@ -31,15 +32,31 @@ public class Game {
 
         Player player = PlayerFactory.getNewPlayer();
         Enemy enemy = EnemyFactory.getNewEnemy();
+        Boss boss = EnemyFactory.getNewBoss();
 
-        Prop wall = PropFactory.getNewProp(500,100,340,330);
-        Prop wall1 = PropFactory.getNewProp(200,200,200,200);
-        Rectangle rectangle = new Rectangle(200,200,200,200);
-        Rectangle rectangle1 = new Rectangle(500,100,340,330);
-        rectangle.setColor(Color.BLUE);
-        rectangle1.setColor(Color.BLUE);
-        rectangle.fill();
-        rectangle1.fill();
+        Prop fieldUp = PropFactory.getNewProp(-10,10,1500,60);
+        Prop fieldDown = PropFactory.getNewProp(-10,800,1500,10);
+        Prop fieldLeft = PropFactory.getNewProp(0,200,10,500);
+        Prop fieldRight = PropFactory.getNewProp(1460,10,10,800);
+        Prop build1 = PropFactory.getNewProp(10,10,340,350);
+        Prop build2 = PropFactory.getNewProp(10,490,90,320);
+        Prop build3 = PropFactory.getNewProp(210,490,140,320);
+        Prop build4 = PropFactory.getNewProp(460,490,190,320);
+//
+//
+//
+//
+//
+        Prop build5 = PropFactory.getNewProp(760,490,220,320);
+        Prop build6 = PropFactory.getNewProp(1050,490,160,320);
+        Prop build7 = PropFactory.getNewProp(1270,540,200,270);
+        Prop build8 = PropFactory.getNewProp(1040,70,150,290);
+//
+//
+//
+//
+        Prop build9 = PropFactory.getNewProp(760,70,210,290);
+        Prop build10 = PropFactory.getNewProp(460,150,190,210);
 
         //ATRIBUIR A REFERENCIA DO DETECTOR AO PLAYER
         player.setCollisionDetector(collisionDetector);
@@ -48,19 +65,31 @@ public class Game {
         objects.add(player);
 
         //ADICIONAR ENEMY A LISTA
-//        objects.add(enemy);
+        objects.add(enemy);
+        objects.add(boss);
 
         //ATRIBUIR REFERENCIA DO DETECTOR A WALL
-        wall.setCollisionDetector(collisionDetector);
-        wall1.setCollisionDetector(collisionDetector);
+
 
         //ATRIBUIR REFERENCIA DO DETECTOR A ENEMY
         enemy.setCollisionDetector(collisionDetector);
+        boss.setCollisionDetector(collisionDetector);
 
         //ADICIONAR WALL A LISTa
-        objects.add(enemy);
-        objects.add(wall1);
-        objects.add(wall);
+        objects.add(fieldDown);
+        objects.add(fieldLeft);
+        objects.add(fieldRight);
+        objects.add(fieldUp);
+        objects.add(build1);
+        objects.add(build2);
+        objects.add(build3);
+        objects.add(build4);
+        objects.add(build5);
+        objects.add(build6);
+        objects.add(build7);
+        objects.add(build8);
+        objects.add(build9);
+        objects.add(build10);
         OurKeyboard keyboard = new OurKeyboard(player);
         keyboard.playerKeyboard();
     }
