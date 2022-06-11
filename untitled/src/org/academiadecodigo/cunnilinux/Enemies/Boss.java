@@ -9,7 +9,7 @@ public class Boss extends Alive implements Hitable {
     private Picture picture;
     public Boss(int health, int damage, Rectangle hitbox) {
         super(health, damage, hitbox);
-        this.picture = new Picture(1000,200,"untitled/Utils/player_forward.png");
+        this.picture = new Picture(1000,200,"untitled/Utils/Pictures/Characters/boss_down.png");
         picture.draw();
     }
 

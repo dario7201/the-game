@@ -5,6 +5,7 @@ import org.academiadecodigo.cunnilinux.Enemies.Boss;
 import org.academiadecodigo.cunnilinux.Enemies.Enemy;
 import org.academiadecodigo.cunnilinux.GameObjects.GameObjects;
 import org.academiadecodigo.cunnilinux.Player.Player;
+import org.academiadecodigo.cunnilinux.Props.Chest;
 
 import java.util.LinkedList;
 
@@ -67,6 +68,18 @@ public class CollisionDetector {
                        verifyMoveRight(objectToCompare,object) || verifyMoveUp(objectToCompare,object)) {
                    return (Boss) object;
                }
+            }
+        }
+
+        return null;
+    }
+    public Chest chestInRange(GameObjects objectToCompare) {
+        for (GameObjects object : objects) {
+            if (objectToCompare instanceof Player && object instanceof Chest) {
+                if(verifyMoveDown(objectToCompare,object) || verifyMoveLeft(objectToCompare,object) ||
+                        verifyMoveRight(objectToCompare,object) || verifyMoveUp(objectToCompare,object)) {
+                    return (Chest) object;
+                }
             }
         }
 

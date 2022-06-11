@@ -9,6 +9,7 @@ import org.academiadecodigo.cunnilinux.GameObjects.GameObjects;
 import org.academiadecodigo.cunnilinux.OurKeyboard.OurKeyboard;
 import org.academiadecodigo.cunnilinux.Player.Player;
 import org.academiadecodigo.cunnilinux.Player.PlayerFactory;
+import org.academiadecodigo.cunnilinux.Props.Chest;
 import org.academiadecodigo.cunnilinux.Props.PropFactory;
 import org.academiadecodigo.cunnilinux.Props.Prop;
 import org.academiadecodigo.cunnilinux.Props.Wall;
@@ -20,11 +21,10 @@ import java.util.LinkedList;
 
 public class Game {
     LinkedList<GameObjects> objects;
-    private int maxRound;
-    private int currentRound;
+     public static final int maxRound = 3;
+     public static final int currentRound = 0;
     public void init() {
-        private int maxRound;
-        private int currentRound;
+
         FieldFactory.getNewField();
 
         //CRIAR LISTA
@@ -37,6 +37,7 @@ public class Game {
         Player player = PlayerFactory.getNewPlayer();
         Enemy enemy = EnemyFactory.getNewEnemy();
         Boss boss = EnemyFactory.getNewBoss();
+        Chest mari = PropFactory.getNewMC();
 
         Prop fieldUp = PropFactory.getNewProp(-10,10,1500,60);
         Prop fieldDown = PropFactory.getNewProp(-10,800,1500,10);
@@ -80,6 +81,7 @@ public class Game {
         boss.setCollisionDetector(collisionDetector);
 
         //ADICIONAR WALL A LISTa
+        objects.add(mari);
         objects.add(fieldDown);
         objects.add(fieldLeft);
         objects.add(fieldRight);
@@ -101,10 +103,10 @@ public class Game {
 
     public void start() {
         init();
-        createEnemies(0);
+        createEnemies();
     }
 
-    private void createEnemies(currentRound) {
+    private void createEnemies() {
 
     }
 }

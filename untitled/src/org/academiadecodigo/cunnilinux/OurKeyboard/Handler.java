@@ -36,7 +36,7 @@ public class Handler implements KeyboardHandler {
 
                 break;
             case KeyboardEvent.KEY_Z:
-//                player.interact();
+                player.interact();
                 break;
             default:
         }
