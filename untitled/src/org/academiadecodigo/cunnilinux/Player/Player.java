@@ -2,8 +2,8 @@ package org.academiadecodigo.cunnilinux.Player;
 
 import org.academiadecodigo.cunnilinux.Alive;
 import org.academiadecodigo.cunnilinux.Collision.DirectionType;
+import org.academiadecodigo.cunnilinux.Enemies.Enemy;
 import org.academiadecodigo.cunnilinux.Interfaces.Hitable;
-import org.academiadecodigo.cunnilinux.Interfaces.Interactable;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -11,11 +11,11 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Player extends Alive implements Hitable {
     private final int MOVEMENT_SIZE = 10;
     Picture picture;
-    private int damage;
+    private int damage = 1;
     public boolean isCrashed = false;
 
-    public Player(int health, Rectangle hitbox) {
-        super(health, hitbox);
+    public Player(int health, int damage, Rectangle hitbox) {
+        super(health, damage, hitbox);
         this.picture = new Picture(10, 10, "untitled/Utils/player_forward.png");
         this.picture.draw();
     }
@@ -62,21 +62,21 @@ public class Player extends Alive implements Hitable {
     public void setDamage(int damage) {
         this.damage = damage;
     }
-    public void interactUp(){
 
-    }
-    public void interactDown(){
-
-    }
-    public void interactLeft(){
-
-    }
-    public void interactRight(){
+    public void interact() {
 
     }
 
     @Override
-    public void hit(int damage) {
-    setHealth(getHealth() - damage);
+    public void hit() {
+        Enemy enemy = getCollisionDetector().isInAttackRange(this);
+        if(enemy.getHealth() > 0) {
+        enemy.setHealth(enemy.getHealth()-damage);
+        if(enemy.getHealth() <= 0) {
+           enemy.setDead();
+            System.out.println(enemy.isDead());
+        }
+        }
+
     }
 }

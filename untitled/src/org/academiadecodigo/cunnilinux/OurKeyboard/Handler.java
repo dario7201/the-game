@@ -32,7 +32,8 @@ public class Handler implements KeyboardHandler {
                 player.moveDown();
                 break;
             case KeyboardEvent.KEY_X:
-//                player.hit();
+               player.hit();
+
                 break;
             case KeyboardEvent.KEY_Z:
 //                player.interact();

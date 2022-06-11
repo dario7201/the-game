@@ -6,11 +6,13 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public abstract class Alive extends GameObjects {
     private int health;
+    private int damage;
     private boolean isDead;
     private String message;
-    public Alive(int health, Rectangle hitbox) {
+    public Alive(int health,int damage, Rectangle hitbox) {
         super(hitbox);
         this.health = health;
+        this.damage = damage;
     }
 
     public int getHealth() {

@@ -8,14 +8,16 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Enemy extends Alive implements Hitable {
     private  Picture picture;
 
-    public Enemy(int health, Rectangle hitbox) {
-        super(health, hitbox);
+    public Enemy(int health, int damage, Rectangle hitbox) {
+        super(health, damage, hitbox);
         this.picture = new Picture(500, 600, "untitled/Utils/player_forward.png");
         this.picture.draw();
+        this.picture.load();
     }
 
+
     @Override
-    public void hit(int damage) {
+    public void hit() {
 
     }
 }
