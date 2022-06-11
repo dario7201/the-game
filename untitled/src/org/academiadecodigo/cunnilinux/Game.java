@@ -20,7 +20,11 @@ import java.util.LinkedList;
 
 public class Game {
     LinkedList<GameObjects> objects;
+    private int maxRound;
+    private int currentRound;
     public void init() {
+        private int maxRound;
+        private int currentRound;
         FieldFactory.getNewField();
 
         //CRIAR LISTA
@@ -97,5 +101,10 @@ public class Game {
 
     public void start() {
         init();
+        createEnemies(0);
+    }
+
+    private void createEnemies(currentRound) {
+
     }
 }
