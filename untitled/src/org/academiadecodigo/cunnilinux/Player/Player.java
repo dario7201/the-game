@@ -23,6 +23,7 @@ public class Player extends Alive implements Hitable {
     private Picture swordright;
     private int damage = 10;
     public boolean isCrashed = false;
+    private boolean withSword = false;
 
     public Player(int health, int damage, Rectangle hitbox) {
         super(health, damage, hitbox);
@@ -38,7 +39,7 @@ public class Player extends Alive implements Hitable {
     public void moveRight() {
         if (!(super.getCollisionDetector().isCrashed(this, DirectionType.RIGHT))) {
             picture.delete();
-            picture = new Picture(getX(),getY(),"untitled/Utils/Pictures/Characters/player_right_sword.png");
+            picture = new Picture(getX(),getY(),"untitled/Utils/Pictures/Characters/player_right.png");
             picture.draw();
             getPicture().translate(MOVEMENT_SIZE, 0);
             getHitbox().translate(MOVEMENT_SIZE, 0);
@@ -48,7 +49,7 @@ public class Player extends Alive implements Hitable {
     public void moveLeft() {
         if (!(super.getCollisionDetector().isCrashed(this, DirectionType.LEFT))) {
             picture.delete();
-            picture = new Picture(getX(),getY(),"untitled/Utils/Pictures/Characters/player_left_sword.png");
+            picture = new Picture(getX(),getY(),"untitled/Utils/Pictures/Characters/player_left.png");
             picture.draw();
             getPicture().translate(-MOVEMENT_SIZE, 0);
             getHitbox().translate(-MOVEMENT_SIZE, 0);
@@ -58,7 +59,7 @@ public class Player extends Alive implements Hitable {
     public void moveUp() {
         if (!(super.getCollisionDetector().isCrashed(this, DirectionType.UP))) {
             picture.delete();
-            picture = new Picture(getX(),getY(),"untitled/Utils/Pictures/Characters/player_up_sword.png");
+            picture = new Picture(getX(),getY(),"untitled/Utils/Pictures/Characters/player_up.png");
             picture.draw();
             getPicture().translate(0, -MOVEMENT_SIZE);
             getHitbox().translate(0, -MOVEMENT_SIZE);
@@ -68,13 +69,55 @@ public class Player extends Alive implements Hitable {
     public void moveDown() {
         if (!(super.getCollisionDetector().isCrashed(this, DirectionType.DOWN))) {
             picture.delete();
-            picture = new Picture(getX(),getY(),"untitled/Utils/Pictures/Characters/player_down_sword.png");
+            picture = new Picture(getX(),getY(),"untitled/Utils/Pictures/Characters/player_forward.png");
             picture.draw();
             getPicture().translate(0, MOVEMENT_SIZE);
             getHitbox().translate(0, MOVEMENT_SIZE);
         }
     }
+    public void moveRightS() {
+        //if (!(super.getCollisionDetector().isCrashed(this, DirectionType.RIGHT))) {
+        picture.delete();
+        picture = new Picture(getX(), getY(), "untitled/Utils/Pictures/Characters/player_right_sword.png");
+        picture.grow(1,1);
+        picture.draw();
+        getPicture().translate(MOVEMENT_SIZE, 0);
+        getHitbox().translate(MOVEMENT_SIZE, 0);
+        //}
+    }
 
+    public void moveLeftS() {
+        //if (!(super.getCollisionDetector().isCrashed(this, DirectionType.LEFT))) {
+        picture.delete();
+        picture = new Picture(getX(), getY(), "untitled/Utils/Pictures/Characters/player_left_sword.png");
+        picture.grow(1,1);
+        picture.draw();
+        getPicture().translate(-MOVEMENT_SIZE, 0);
+        getHitbox().translate(-MOVEMENT_SIZE, 0);
+        //}
+    }
+
+    public void moveUpS() {
+        //if (!(super.getCollisionDetector().isCrashed(this, DirectionType.UP))) {
+        picture.delete();
+        picture = new Picture(getX(), getY(), "untitled/Utils/Pictures/Characters/player_up_sword.png");
+        picture.grow(1,1);
+        picture.draw();
+        getPicture().translate(0, -MOVEMENT_SIZE);
+        getHitbox().translate(0, -MOVEMENT_SIZE);
+        //}
+    }
+
+    public void moveDownS() {
+        //if (!(super.getCollisionDetector().isCrashed(this, DirectionType.DOWN))) {
+        picture.delete();
+        picture = new Picture(getX(), getY(), "untitled/Utils/Pictures/Characters/player_down_sword.png");
+        picture.grow(1,2);
+        picture.draw();
+        getPicture().translate(0, MOVEMENT_SIZE);
+        getHitbox().translate(0, MOVEMENT_SIZE);
+        //}
+    }
     public int getDamage() {
         return damage;
     }
@@ -88,12 +131,20 @@ public class Player extends Alive implements Hitable {
         if(chest != null) {
             if(!chest.isInteracted()){
                 picture.delete();
-                setPicture(new Picture(getX(), getY(), "untitled/Utils/cock_up.png"));
+                setPicture(new Picture(getX(), getY(), "untitled/Utils/Pictures/Characters/player_down_sword.png"));
                 picture.draw();
+                picture.grow(1,2);
                 damage = 20;
-                chest.setInteracted();//receber pics dos mcs
+                chest.setInteracted();
+                setwithSword();
+                chest.getPicture().delete();
+                chest.setPicture(new Picture(chest.getX(),chest.getY(),"untitled/Utils/Pictures/Characters/mary_after.png"));
+                chest.getPicture().grow(5,5);
+                chest.getPicture().draw();
+                //receber pics dos mcs
             }
         }
+//        if(getHitbox().getX() == && getHitbox().getY())
     }
 
     public void setPicture(Picture picture) {
@@ -132,6 +183,14 @@ public class Player extends Alive implements Hitable {
             }
         }
 
+    }
+
+    public boolean getiswithSword() {
+        return withSword;
+    }
+
+    public void setwithSword() {
+        withSword = true;
     }
 
 }

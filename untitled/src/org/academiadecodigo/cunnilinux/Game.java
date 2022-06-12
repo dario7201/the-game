@@ -38,10 +38,10 @@ public class Game {
         CollisionDetector collisionDetector = new CollisionDetector(objects);
 
         Player player = PlayerFactory.getNewPlayer();
-        Enemy enemy1 = EnemyFactory.getNewEnemy(380);
-        Enemy enemy2 = EnemyFactory.getNewEnemy(680);
-        Enemy enemy3 = EnemyFactory.getNewEnemy(990);
-        Enemy enemy4 = EnemyFactory.getNewEnemy(1220);
+        Enemy enemy1 = EnemyFactory.getNewEnemy(380,40,10);
+        Enemy enemy2 = EnemyFactory.getNewEnemy(680,40,10);
+        Enemy enemy3 = EnemyFactory.getNewEnemy(990,40,10);
+        Enemy enemy4 = EnemyFactory.getNewEnemy(1220,40, 10);
         Boss boss = EnemyFactory.getNewBoss(900);
         Chest mari = PropFactory.getNewMC();
 
@@ -119,7 +119,7 @@ public class Game {
         }
         //rounds
     public void verifyGameOver(){
-        while(!)
+//        while(!)
     }
 
 

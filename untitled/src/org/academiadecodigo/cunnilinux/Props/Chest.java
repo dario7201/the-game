@@ -10,7 +10,9 @@ public class Chest extends Prop {
     public Chest(Rectangle hitbox) {
         super(hitbox);
         this.picture = new Picture(350, 200, "untitled/Utils/Pictures/Characters/mary_before.png");
+        picture.grow(5,5);
         picture.draw();
+
     }
 
     public boolean isInteracted() {
@@ -19,5 +21,13 @@ public class Chest extends Prop {
 
     public void setInteracted() {
         isInteracted = true;
+    }
+
+    public void setPicture(Picture picture) {
+        this.picture = picture;
+    }
+
+    public Picture getPicture() {
+        return picture;
     }
 }

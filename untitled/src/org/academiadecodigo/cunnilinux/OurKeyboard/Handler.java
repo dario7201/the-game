@@ -20,23 +20,35 @@ public class Handler implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_LEFT:
-                if(!player.isDead()){
-                player.moveLeft();}
+                if(player.getiswithSword()){
+                    player.moveLeftS();
+                    break;
+                }
+                player.moveLeft();
                 break;
             case KeyboardEvent.KEY_UP:
-                if(!player.isDead()){
-                player.moveUp();}
+                if(player.getiswithSword()){
+                    player.moveUpS();
+                    break;
+                }
+                player.moveUp();
                 break;
             case KeyboardEvent.KEY_RIGHT:
-                if(!player.isDead()){
-                player.moveRight();}
+                if (player.getiswithSword()){
+                    player.moveRightS();
+                    break;
+                }
+                player.moveRight();
                 break;
             case KeyboardEvent.KEY_DOWN:
-                if(!player.isDead()){
-                player.moveDown();}
+                if ( player.getiswithSword()){
+                    player.moveDownS();
+                    break;
+                }
+                player.moveDown();
                 break;
             case KeyboardEvent.KEY_X:
-               player.hit();
+                player.hit();
 
                 break;
             case KeyboardEvent.KEY_Z:
