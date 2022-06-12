@@ -20,16 +20,20 @@ public class Handler implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_LEFT:
-                player.moveLeft();
+                if(!player.isDead()){
+                player.moveLeft();}
                 break;
             case KeyboardEvent.KEY_UP:
-                player.moveUp();
+                if(!player.isDead()){
+                player.moveUp();}
                 break;
             case KeyboardEvent.KEY_RIGHT:
-                player.moveRight();
+                if(!player.isDead()){
+                player.moveRight();}
                 break;
             case KeyboardEvent.KEY_DOWN:
-                player.moveDown();
+                if(!player.isDead()){
+                player.moveDown();}
                 break;
             case KeyboardEvent.KEY_X:
                player.hit();

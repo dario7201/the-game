@@ -6,7 +6,7 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public abstract class Alive extends GameObjects {
     private int health;
-    private int damage;
+    protected int damage;
     private boolean isDead;
     private String message;
     public Alive(int health,int damage, Rectangle hitbox) {

@@ -65,6 +65,32 @@ public class CollisionDetector {
 
         return null;
     }
+    public Player playerInRange(GameObjects objectToCompare) {
+        for (GameObjects object : objects) {
+            if (objectToCompare instanceof Enemy && object instanceof Player) {
+                if (objectToCompare.getHitbox().getX() == object.getHitbox().getX() &&
+                        ((Enemy) objectToCompare).getHitbox().getY() == object.getHitbox().getY() &&
+                        objectToCompare.getHitbox().getWidth() == object.getHitbox().getWidth() &&
+                        objectToCompare.getHitbox().getHeight() == ((Player) object).getHitbox().getHeight()) {
+                    return (Player) object;
+                }
+            }
+        }
+        return null;
+    }
+    public Player bossPlayerInRange(GameObjects objectToCompare) {
+        for (GameObjects object : objects) {
+            if (objectToCompare instanceof Boss && object instanceof Player) {
+                if (objectToCompare.getHitbox().getX() == object.getHitbox().getX() &&
+                        ((Boss) objectToCompare).getHitbox().getY() == object.getHitbox().getY() &&
+                        objectToCompare.getHitbox().getWidth() == object.getHitbox().getWidth() &&
+                        objectToCompare.getHitbox().getHeight() == ((Player) object).getHitbox().getHeight()) {
+                    return (Player) object;
+                }
+            }
+        }
+        return null;
+    }
 
     public Boss bossInRange(GameObjects objectToCompare) {
         for (GameObjects object : objects) {

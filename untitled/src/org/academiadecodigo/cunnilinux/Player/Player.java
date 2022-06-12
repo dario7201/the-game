@@ -102,7 +102,7 @@ public class Player extends Alive implements Hitable {
 
     @Override
     public void hit() {
-
+        System.out.println(getHealth());
         Enemy enemy = getCollisionDetector().enemyInRange(this);
         Boss boss = getCollisionDetector().bossInRange(this);
         if (enemy != null) {

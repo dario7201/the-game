@@ -53,19 +53,10 @@ public class Game {
         Prop build2 = PropFactory.getNewProp(10, 490, 90, 320);
         Prop build3 = PropFactory.getNewProp(210, 490, 140, 320);
         Prop build4 = PropFactory.getNewProp(460, 490, 190, 320);
-//
-//
-//
-//
-//
         Prop build5 = PropFactory.getNewProp(760, 490, 220, 320);
         Prop build6 = PropFactory.getNewProp(1050, 490, 160, 320);
         Prop build7 = PropFactory.getNewProp(1270, 540, 200, 270);
         Prop build8 = PropFactory.getNewProp(1040, 70, 150, 290);
-//
-//
-//
-//
         Prop build9 = PropFactory.getNewProp(760, 70, 210, 290);
         Prop build10 = PropFactory.getNewProp(460, 150, 190, 210);
 
@@ -121,10 +112,15 @@ public class Game {
                 Thread.sleep(50);
             }
             moveEnemies();
+            moveBoss();
             Thread.sleep(250);
         }
 
         }
+        //rounds
+    public void verifyGameOver(){
+        while(!)
+    }
 
 
 
@@ -143,6 +139,14 @@ public class Game {
         for (GameObjects object : objects) {
             if (object instanceof Enemy && !((Enemy) object).isDead()) {
                 ((Enemy) object).enemyMove();
+            }
+        }
+
+    }
+    public void moveBoss() {
+        for (GameObjects object : objects) {
+            if (object instanceof Boss && !((Boss) object).isDead()) {
+                ((Boss) object).bossMove();
             }
         }
 
