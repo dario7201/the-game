@@ -9,7 +9,7 @@ public class Chest extends Prop {
 
     public Chest(Rectangle hitbox) {
         super(hitbox);
-        this.picture = new Picture(350, 200, "untitled/Utils/player_forward.png");
+        this.picture = new Picture(350, 200, "untitled/Utils/Pictures/Characters/mary_before.png");
         picture.draw();
     }
 

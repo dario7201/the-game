@@ -35,7 +35,7 @@ public abstract class GameObjects {
         return hitbox;
     }
     public void deleteHitbox() {
-        hitbox.translate(10000,10000);
+        hitbox.translate(-500,-500);
     }
 
     public CollisionDetector getCollisionDetector() {

@@ -9,6 +9,7 @@ import org.academiadecodigo.cunnilinux.GameObjects.GameObjects;
 import org.academiadecodigo.cunnilinux.OurKeyboard.OurKeyboard;
 import org.academiadecodigo.cunnilinux.Player.Player;
 import org.academiadecodigo.cunnilinux.Player.PlayerFactory;
+import org.academiadecodigo.cunnilinux.Props.Chest;
 import org.academiadecodigo.cunnilinux.Props.PropFactory;
 import org.academiadecodigo.cunnilinux.Props.Prop;
 import org.academiadecodigo.cunnilinux.Props.Wall;
@@ -19,12 +20,14 @@ import java.awt.*;
 import java.util.LinkedList;
 
 public class Game {
-
-    int maxNumberRounds;
-    int currentRound;
     LinkedList<GameObjects> objects;
+    public static final int maxRound = 3;
+    public static final int currentRound = 0;
+    private boolean gameOver;
+    private boolean allEnemiesDead;
 
     public void init() {
+
         FieldFactory.getNewField();
 
         //CRIAR LISTA
@@ -35,9 +38,12 @@ public class Game {
         CollisionDetector collisionDetector = new CollisionDetector(objects);
 
         Player player = PlayerFactory.getNewPlayer();
-        Enemy enemy = EnemyFactory.getNewEnemy();
-        Boss boss = EnemyFactory.getNewBoss();
-        Prop mari = PropFactory.getNewMC();
+        Enemy enemy1 = EnemyFactory.getNewEnemy(380);
+        Enemy enemy2 = EnemyFactory.getNewEnemy(680);
+        Enemy enemy3 = EnemyFactory.getNewEnemy(990);
+        Enemy enemy4 = EnemyFactory.getNewEnemy(1220);
+        Boss boss = EnemyFactory.getNewBoss(900);
+        Chest mari = PropFactory.getNewMC();
 
         Prop fieldUp = PropFactory.getNewProp(-10, 10, 1500, 60);
         Prop fieldDown = PropFactory.getNewProp(-10, 800, 1500, 10);
@@ -47,19 +53,10 @@ public class Game {
         Prop build2 = PropFactory.getNewProp(10, 490, 90, 320);
         Prop build3 = PropFactory.getNewProp(210, 490, 140, 320);
         Prop build4 = PropFactory.getNewProp(460, 490, 190, 320);
-//
-//
-//
-//
-//
         Prop build5 = PropFactory.getNewProp(760, 490, 220, 320);
         Prop build6 = PropFactory.getNewProp(1050, 490, 160, 320);
         Prop build7 = PropFactory.getNewProp(1270, 540, 200, 270);
         Prop build8 = PropFactory.getNewProp(1040, 70, 150, 290);
-//
-//
-//
-//
         Prop build9 = PropFactory.getNewProp(760, 70, 210, 290);
         Prop build10 = PropFactory.getNewProp(460, 150, 190, 210);
 
@@ -70,14 +67,20 @@ public class Game {
         objects.add(player);
 
         //ADICIONAR ENEMY A LISTA
-        objects.add(enemy);
+        objects.add(enemy1);
+        objects.add(enemy2);
+        objects.add(enemy3);
+        objects.add(enemy4);
         objects.add(boss);
 
         //ATRIBUIR REFERENCIA DO DETECTOR A WALL
 
 
         //ATRIBUIR REFERENCIA DO DETECTOR A ENEMY
-        enemy.setCollisionDetector(collisionDetector);
+        enemy1.setCollisionDetector(collisionDetector);
+        enemy2.setCollisionDetector(collisionDetector);
+        enemy3.setCollisionDetector(collisionDetector);
+        enemy4.setCollisionDetector(collisionDetector);
         boss.setCollisionDetector(collisionDetector);
 
         //ADICIONAR WALL A LISTa
@@ -101,30 +104,77 @@ public class Game {
     }
 
 
-    public void start() {
+    public void start() throws InterruptedException {
         init();
-
-        {
-//
-//
-//        for (int i = 0; i < maxNumberRounds; i++) {
-//
-//            while (!allEnemyIsDead || !player.isDead()) {
-//                // createEnemies(i+1); //AQUI DENTRO TEM DE CRIAR OS INIMIGOS PARA A RONDA EM QUESTAO SE QUISEREM UM BOSS NA RONDA TRES QUANDO RECEBEREM O 3 no CREATE ENEMIES CRIAM UM BOSS E N NORMAIS -> dica a cada ronda reviver os inimigos e acrescentar mais
-//                //createEnemies2(i+2);
-//                //createEnemies3(i+3);
-//                //  moveEnemies();
-//                checkIfEnemiesAreDead(); //PERCORRER OS GAMEOBJECTS E INSTANCE OF ENEMY && IS DEAD
-//
-//            }
-//        }
-//
-//    }
-//
-//
-//    }
+        for (int i = 0; i < 4000; i++) {
+            if(i == 0){
+                leaveSpawn();
+                Thread.sleep(50);
+            }
+            moveEnemies();
+            moveBoss();
+            Thread.sleep(250);
+        }
 
         }
+        //rounds
+    public void verifyGameOver(){
+        while(!)
     }
+
+
+
+    public void leaveSpawn() throws InterruptedException {
+        for (GameObjects object : objects) {
+            if (object instanceof Enemy) {
+                for (int i = 0; i < 30; i++) {
+                    Thread.sleep(50);
+                    ((Enemy) object).moveUpEnemy();
+                }
+            }
+        }
+    }
+
+    public void moveEnemies() {
+        for (GameObjects object : objects) {
+            if (object instanceof Enemy && !((Enemy) object).isDead()) {
+                ((Enemy) object).enemyMove();
+            }
+        }
+
+    }
+    public void moveBoss() {
+        for (GameObjects object : objects) {
+            if (object instanceof Boss && !((Boss) object).isDead()) {
+                ((Boss) object).bossMove();
+            }
+        }
+
+    }
+
+
+//        public void moveRandomEnemy() throws InterruptedException{
+//        int iUp= 0;
+//        int maxUp = 40;
+//        int i = 0;
+//        int maxRandom = 1000;
+//        while(iUp < maxUp){
+//
+//            enemy2.moveUpEnemy();
+//            enemy3.moveUpEnemy();
+//            enemy4.moveUpEnemy();
+//            iUp++;
+//            Thread.sleep(300);
+//            if(iUp == maxUp) {
+//                while (i < maxRandom) {
+//                    enemy1.enemyMove();
+//                    enemy2.enemyMove();
+//                    enemy3.enemyMove();
+//                    enemy4.enemyMove();
+//                    i++;
+//                    Thread.sleep(400);
+//                }
+//            }
+//        }
 }
 

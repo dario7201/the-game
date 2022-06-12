@@ -11,7 +11,7 @@ public class PropFactory {
         };
 
     }
-    public static Prop getNewMC() {
+    public static Chest getNewMC() {
         return new Chest(new Rectangle(350,200, 20,20));
 
 

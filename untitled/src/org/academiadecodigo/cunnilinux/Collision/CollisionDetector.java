@@ -22,52 +22,96 @@ public class CollisionDetector {
     //sempre que o player anda isto tem de ser checked, meter o movement no player em vez de handler
     public boolean isCrashed(GameObjects objectToCompare, DirectionType directionType) {
         for (GameObjects object : objects) {
-            if (!(object instanceof Player)) {
-                switch (directionType) {
-                    case UP:
-                        if (!verifyMoveUp(objectToCompare, object)) {
-                            continue;
-                        }
-                        return true;
-                    case DOWN:
-                        if (!verifyMoveDown(objectToCompare, object)) {
-                            continue;
-                        }
-                        return true;
-                    case LEFT:
-                        if (!verifyMoveLeft(objectToCompare, object)) {
-                            continue;
-                        }
-                        return true;
-                    case RIGHT:
-                        if (!verifyMoveRight(objectToCompare, object)) {
-                            continue;
-                        }
-                        return true;
-                }
+            if (objectToCompare.equals(object)) {
+                continue;
             }
-        }return false;
+            switch (directionType) {
+                case UP:
+                    if (!verifyMoveUp(objectToCompare, object)) {
+                        continue;
+                    }
+                    return true;
+                case DOWN:
+                    if (!verifyMoveDown(objectToCompare, object)) {
+                        continue;
+                    }
+                    return true;
+                case LEFT:
+                    if (!verifyMoveLeft(objectToCompare, object)) {
+                        continue;
+                    }
+                    return true;
+                case RIGHT:
+                    if (!verifyMoveRight(objectToCompare, object)) {
+                        continue;
+                    }
+                    return true;
+
+            }
+        }
+        return false;
     }
+
 
     public Enemy enemyInRange(GameObjects objectToCompare) {
         for (GameObjects object : objects) {
             if (objectToCompare instanceof Player && object instanceof Enemy) {
-               if(verifyMoveDown(objectToCompare,object) || verifyMoveLeft(objectToCompare,object) ||
-                       verifyMoveRight(objectToCompare,object) || verifyMoveUp(objectToCompare,object)) {
-                   return (Enemy) object;
-               }
+                if (verifyMoveDown(objectToCompare, object) || verifyMoveLeft(objectToCompare, object) ||
+                        verifyMoveRight(objectToCompare, object) || verifyMoveUp(objectToCompare, object)) {
+                    return (Enemy) object;
+                }
             }
         }
 
         return null;
     }
+    public Player playerInRange(GameObjects objectToCompare) {
+        for (GameObjects object : objects) {
+            if (objectToCompare instanceof Enemy && object instanceof Player) {
+                if (objectToCompare.getHitbox().getX() == object.getHitbox().getX() &&
+                        ((Enemy) objectToCompare).getHitbox().getY() == object.getHitbox().getY() &&
+                        objectToCompare.getHitbox().getWidth() == object.getHitbox().getWidth() &&
+                        objectToCompare.getHitbox().getHeight() == ((Player) object).getHitbox().getHeight()) {
+                    return (Player) object;
+                }
+            }
+        }
+        return null;
+    }
+    public Player bossPlayerInRange(GameObjects objectToCompare) {
+        for (GameObjects object : objects) {
+            if (objectToCompare instanceof Boss && object instanceof Player) {
+                if (objectToCompare.getHitbox().getX() == object.getHitbox().getX() &&
+                        ((Boss) objectToCompare).getHitbox().getY() == object.getHitbox().getY() &&
+                        objectToCompare.getHitbox().getWidth() == object.getHitbox().getWidth() &&
+                        objectToCompare.getHitbox().getHeight() == ((Player) object).getHitbox().getHeight()) {
+                    return (Player) object;
+                }
+            }
+        }
+        return null;
+    }
+
     public Boss bossInRange(GameObjects objectToCompare) {
         for (GameObjects object : objects) {
             if (objectToCompare instanceof Player && object instanceof Boss) {
-               if(verifyMoveDown(objectToCompare,object) || verifyMoveLeft(objectToCompare,object) ||
-                       verifyMoveRight(objectToCompare,object) || verifyMoveUp(objectToCompare,object)) {
-                   return (Boss) object;
-               }
+                if (verifyMoveDown(objectToCompare, object) || verifyMoveLeft(objectToCompare, object) ||
+                        verifyMoveRight(objectToCompare, object) || verifyMoveUp(objectToCompare, object)) {
+                    return (Boss) object;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public Chest chestInRange(GameObjects objectToCompare) {
+        for (GameObjects object : objects) {
+            if (objectToCompare instanceof Player && object instanceof Chest) {
+                if (verifyMoveDown(objectToCompare, object) || verifyMoveLeft(objectToCompare, object) ||
+                        verifyMoveRight(objectToCompare, object) || verifyMoveUp(objectToCompare, object)) {
+                    return (Chest) object;
+                }
             }
         }
 
